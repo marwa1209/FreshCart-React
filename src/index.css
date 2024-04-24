@@ -1,9 +1,18 @@
 /** @format */
-
-@tailwind base;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap")
+  @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .btn-blue {
   @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+}
+body {
+  font-family: "Julius Sans One", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
