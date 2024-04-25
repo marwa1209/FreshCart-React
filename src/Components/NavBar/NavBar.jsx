@@ -1,17 +1,21 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/images/freshcart-logo.svg";
 import { Link } from "react-router-dom";
 export default function NavBar() {
+  const [showMenu, setShowMenu] = useState(false);
+  const displayMenueBars = () => {
+    setShowMenu(!showMenu);
+  };
   return (
-    <nav className="py-4 w-full">
+    <nav className="py-4 w-full  relative">
       <div className="container mx-auto flex justify-between items-center">
         <Link className="logo me-10" to={"home"}>
           <img src={logo} alt="Logo" />
         </Link>
         {/* Nav-links-right */}
-        <ul className="flex gap-4 me-auto text-gray-500 list-none">
+        <ul className="lg:flex gap-4 me-auto text-gray-500 list-none  min-[420px]:hidden">
           <li>
             <Link to={"home"}>Home</Link>
           </li>
@@ -29,7 +33,7 @@ export default function NavBar() {
           </li>
         </ul>
         {/* Nav-icons-left */}
-        <ul className="flex gap-4 ms-auto list-none">
+        <ul className="lg:flex gap-4 ms-auto list-none min-[420px]:hidden">
           <li>
             <Link
               className="nav-link"
@@ -98,6 +102,47 @@ export default function NavBar() {
             <span className="text-capitalize cursor-pointer">SignOut</span>
           </li>
         </ul>
+        <div className="lg:hidden min-[420px]:flex ">
+          <i
+            onClick={displayMenueBars}
+            className={`fa-solid ${
+              showMenu ? "fa-xmark" : "fa-bars"
+            } cursor-pointer text-2xl transition-opacity duration-300`}
+          ></i>
+            <ul className={`absolute end-0 top-full bg-light-color py-3 w-full text-center list-none  gap-4 flex-col ${showMenu?'flex':'hidden'}`}>
+              <li>
+                <Link to={"home"}>Home</Link>
+              </li>
+              <li>
+                <Link to={"cart"}>Cart</Link>
+              </li>
+              <li>
+                <Link to={"products"}>Products</Link>
+              </li>
+              <li>
+                <Link to={"categories"}>Categories</Link>
+              </li>
+              <li>
+                <Link to={"brands"}>Brands</Link>
+              </li>
+              <li>
+                <Link
+                  className="text-capitalize cursor-pointer"
+                  to={"register"}
+                >
+                  Register
+                </Link>
+              </li>
+              <li>
+                <Link className="text-capitalize cursor-pointer" to={"login"}>
+                  Login
+                </Link>
+              </li>
+              <li>
+                <span className="text-capitalize cursor-pointer">SignOut</span>
+              </li>
+            </ul>
+        </div>
       </div>
     </nav>
   );
