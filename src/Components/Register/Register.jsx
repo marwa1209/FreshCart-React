@@ -161,13 +161,12 @@ export default function Register() {
             </p>
           </div>
         ) : null}
-
         <button
           type="submit"
           className="btn-main"
           disabled={
             !registerForm.isValid ||
-            Object.values(registerForm.values).every((value) => !value)
+            !registerForm.dirty
           }
         >
           {loaderstate ? (

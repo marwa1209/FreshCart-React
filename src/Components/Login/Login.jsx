@@ -19,6 +19,7 @@ export default function Login() {
         seterrorMessage(err.response.data.message);
       });
     if (data.message === "success") {
+      localStorage.setItem("userToken",data.token)
       setloaderstate(false);
       navigate("/home");
     }
@@ -90,10 +91,7 @@ export default function Login() {
         <button
           type="submit"
           className="btn-main"
-          disabled={
-            !loginForm.isValid ||
-            Object.values(loginForm.values).every((value) => !value)
-          }
+          disabled={!loginForm.isValid || !loginForm.dirty}
         >
           {loaderstate ? (
             <>

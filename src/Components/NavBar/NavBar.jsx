@@ -10,7 +10,7 @@ export default function NavBar() {
   };
   return (
     <nav className="py-4 w-full  relative">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex justify-between items-center px-2">
         <Link className="logo me-10" to={"home"}>
           <img src={logo} alt="Logo" />
         </Link>
@@ -109,39 +109,40 @@ export default function NavBar() {
               showMenu ? "fa-xmark" : "fa-bars"
             } cursor-pointer text-2xl transition-opacity duration-300`}
           ></i>
-            <ul className={`absolute end-0 top-full bg-light-color py-3 w-full text-center list-none  gap-4 flex-col ${showMenu?'flex':'hidden'}`}>
-              <li>
-                <Link to={"home"}>Home</Link>
-              </li>
-              <li>
-                <Link to={"cart"}>Cart</Link>
-              </li>
-              <li>
-                <Link to={"products"}>Products</Link>
-              </li>
-              <li>
-                <Link to={"categories"}>Categories</Link>
-              </li>
-              <li>
-                <Link to={"brands"}>Brands</Link>
-              </li>
-              <li>
-                <Link
-                  className="text-capitalize cursor-pointer"
-                  to={"register"}
-                >
-                  Register
-                </Link>
-              </li>
-              <li>
-                <Link className="text-capitalize cursor-pointer" to={"login"}>
-                  Login
-                </Link>
-              </li>
-              <li>
-                <span className="text-capitalize cursor-pointer">SignOut</span>
-              </li>
-            </ul>
+          <ul
+            className={`absolute end-0 top-full bg-light-color py-3 w-full text-center list-none  gap-4 flex-col ${
+              showMenu ? "flex" : "hidden"
+            }`}
+          >
+            <li>
+              <Link to={"home"}>Home</Link>
+            </li>
+            <li>
+              <Link to={"cart"}>Cart</Link>
+            </li>
+            <li>
+              <Link to={"products"}>Products</Link>
+            </li>
+            <li>
+              <Link to={"categories"}>Categories</Link>
+            </li>
+            <li>
+              <Link to={"brands"}>Brands</Link>
+            </li>
+            <li>
+              <Link className="text-capitalize cursor-pointer" to={"register"}>
+                Register
+              </Link>
+            </li>
+            <li>
+              <Link className="text-capitalize cursor-pointer" to={"login"}>
+                Login
+              </Link>
+            </li>
+            <li>
+              <span className="text-capitalize cursor-pointer">SignOut</span>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
