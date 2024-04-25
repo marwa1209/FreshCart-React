@@ -17,7 +17,7 @@ export default function Register() {
       .post(`https://ecommerce.routemisr.com/api/v1/auth/signup`, reqbody)
       .catch((err) => {setloaderstate(false)
         seterrorMessage(err.response.data.message)});
-    if (data.message == "success") {
+    if (data.message === "success") {
       setloaderstate(false);
       navigate("/login");
     }
@@ -56,7 +56,7 @@ export default function Register() {
   });
   return (
     <section className="w-3/4 mx-auto">
-      <h1 className="mb-10 text-xl font-bold">Register Now :</h1>
+      <h1 className="mb-10 text-xl font-bold">Register :</h1>
       <form onSubmit={registerForm.handleSubmit}>
         <div className="mb-6">
           <label htmlFor="name" className=" label">

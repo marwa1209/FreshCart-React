@@ -2,7 +2,6 @@
 
 import React from "react";
 import logo from "../../assets/images/freshcart-logo.svg";
-import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 export default function NavBar() {
   return (
