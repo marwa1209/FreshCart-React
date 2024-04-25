@@ -7,10 +7,10 @@ import styles from "./Layout.module.css";
 import { Outlet } from "react-router-dom";
 export default function Layout() {
   return (
-    <>
-      <NavBar></NavBar>
-      <Outlet></Outlet>
-      <Footer></Footer>
-    </>
+    <div className={styles.host}>
+      <NavBar />
+      <Outlet />
+      <Footer />
+    </div>
   );
 }

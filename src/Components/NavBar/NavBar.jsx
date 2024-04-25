@@ -11,70 +11,92 @@ export default function NavBar() {
         <Link className="logo me-10" to={"home"}>
           <img src={logo} alt="Logo" />
         </Link>
-        <div className="flex gap-4 me-auto text-gray-500">
-          <Link to={"home"}>Home</Link>
-          <Link to={"cart"}>Cart</Link>
-          <Link to={"products"}>Products</Link>
-          <Link to={"categories"}>Categories</Link>
-          <Link to={"brands"}>Brands</Link>
-        </div>
-        <ul class="flex gap-4 ms-auto list-none">
+        {/* Nav-links-right */}
+        <ul className="flex gap-4 me-auto text-gray-500 list-none">
+          <li>
+            <Link to={"home"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"cart"}>Cart</Link>
+          </li>
+          <li>
+            <Link to={"products"}>Products</Link>
+          </li>
+          <li>
+            <Link to={"categories"}>Categories</Link>
+          </li>
+          <li>
+            <Link to={"brands"}>Brands</Link>
+          </li>
+        </ul>
+        {/* Nav-icons-left */}
+        <ul className="flex gap-4 ms-auto list-none">
           <li>
             <Link
-              class="nav-link"
+              className="nav-link"
               to={"https://www.instagram.com/"}
               target="blank"
             >
-              <i class="fab fa-instagram"></i>
+              <i className="fab fa-instagram"></i>
             </Link>
           </li>
           <li>
             <Link
-              class="nav-link"
+              className="nav-link"
               to={"https://www.facebook.com/"}
               target="blank"
             >
-              <i class="fab fa-facebook"></i>
+              <i className="fab fa-facebook"></i>
             </Link>
           </li>
           <li>
             <Link
-              class="nav-link"
+              className="nav-link"
               to={"https://www.tiktok.com/"}
               target="blank"
             >
-              <i class="fab fa-tiktok"></i>
+              <i className="fab fa-tiktok"></i>
             </Link>
           </li>
           <li>
             <Link
-              class="nav-link"
+              className="nav-link"
               to={"https://www.twitter.com/"}
               target="blank"
             >
-              <i class="fab fa-twitter"></i>
+              <i className="fab fa-twitter"></i>
             </Link>
           </li>
           <li>
             <Link
-              class="nav-link"
+              className="nav-link"
               to={"https://www.linkedin.com/"}
               target="blank"
             >
-              <i class="fab fa-linkedin"></i>
+              <i className="fab fa-linkedin"></i>
             </Link>
           </li>
           <li>
             <Link
-              class="nav-link"
+              className="nav-link"
               to={"https://www.youtube.com/"}
               target="blank"
             >
-              <i class="fab fa-youtube"></i>
+              <i className="fab fa-youtube"></i>
             </Link>
           </li>
           <li>
-            <span class="text-capitalize cursor-pointer">SignOut</span>
+            <Link className="text-capitalize cursor-pointer" to={"register"}>
+              Register
+            </Link>
+          </li>
+          <li>
+            <Link className="text-capitalize cursor-pointer" to={"login"}>
+              Login
+            </Link>
+          </li>
+          <li>
+            <span className="text-capitalize cursor-pointer">SignOut</span>
           </li>
         </ul>
       </div>

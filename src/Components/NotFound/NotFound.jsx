@@ -1,8 +1,15 @@
-import React from 'react'
+/** @format */
 
-import styles from './NotFound.module.css'
+import React from "react";
+
+import styles from "./NotFound.module.css";
+import notfoundimg from "../../assets/images/error.svg";
 export default function NotFound() {
   return (
-    <h2>NotFound</h2>
-  )
+    <>
+      <picture className="notfound">
+        <img src={notfoundimg} alt="NotFound" className="w-full" />
+      </picture>
+    </>
+  );
 }
