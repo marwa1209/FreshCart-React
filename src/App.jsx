@@ -15,6 +15,7 @@ import { useContext, useEffect } from "react";
 import { TokenContext } from "./Context/token";
 import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
 import ProducDetails from "./Components/ProducDetails/ProducDetails";
+import Checkout from './Components/Checkout/Checkout'
 function App() {
   const { setToken } = useContext(TokenContext);
   // routes/
@@ -56,7 +57,7 @@ function App() {
           ),
         },
         {
-          path: "orders",
+          path: "allorders",
           element: (
             <ProtectedRoutes>
               <Orders />
@@ -86,6 +87,10 @@ function App() {
         {
           path: "register",
           element: <Register />,
+        },
+        {
+          path: "checkout/:id",
+          element: <Checkout />,
         },
         { path: "*", element: <NotFound /> },
       ],

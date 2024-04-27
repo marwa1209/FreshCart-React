@@ -11,17 +11,20 @@ import "slick-carousel/slick/slick-theme.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "../node_modules/react-query/es/devtools/devtools";
 import CartContextProvider from "./Context/cartContext";
+import PaymentContextProvider from "./Context/payment";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 let query = new QueryClient();
 root.render(
-  <CartContextProvider>
-    <QueryClientProvider client={query}>
-      <React.StrictMode>
-        <TokenContextProvider>
-          <App />
-        </TokenContextProvider>
-        <ReactQueryDevtools></ReactQueryDevtools>
-      </React.StrictMode>
-    </QueryClientProvider>
-  </CartContextProvider>
+  <PaymentContextProvider>
+    <CartContextProvider>
+      <QueryClientProvider client={query}>
+        <React.StrictMode>
+          <TokenContextProvider>
+            <App />
+          </TokenContextProvider>
+          <ReactQueryDevtools></ReactQueryDevtools>
+        </React.StrictMode>
+      </QueryClientProvider>
+    </CartContextProvider>
+  </PaymentContextProvider>
 );
