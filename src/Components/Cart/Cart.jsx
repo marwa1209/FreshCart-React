@@ -1,8 +1,13 @@
 import React from 'react'
 
-import styles from './Cart.module.css'
+import { Helmet } from 'react-helmet';
 export default function Cart() {
   return (
-    <h2>Cart</h2>
-  )
+    <>
+      <Helmet>
+        <title>Cart</title>
+      </Helmet>
+      <h1>cart</h1>
+    </>
+  );
 }

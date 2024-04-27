@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 export default function Register() {
   let navigate = useNavigate();
   const [errorMessage, seterrorMessage] = useState("");
@@ -55,6 +56,10 @@ export default function Register() {
     onSubmit: callRegister,
   });
   return (
+        <>
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
     <section className="w-3/4 mx-auto">
       <h1 className="mb-10 text-xl font-bold">Register :</h1>
       <form onSubmit={registerForm.handleSubmit}>
@@ -181,5 +186,6 @@ export default function Register() {
         </button>
       </form>
     </section>
+    </>
   );
 }
