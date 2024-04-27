@@ -15,7 +15,6 @@ export default function ProducDetails() {
   let { addToCart } = useContext(CartContext);
 async function addCart(id) {
 let res =await addToCart(id)
-console.log(res.data)
 if (res.data.status === "success") {
   toast.success("Product Added successfully", {
     duration: 4000,
