@@ -21,7 +21,7 @@ export default function NavBar() {
     setShowMenu(false);
   }, []);
   return (
-    <nav className="py-4 w-full  relative">
+    <nav className="py-4 w-full  relative z-30">
       <div className="container mx-auto flex justify-between items-center px-2">
         <Link className={`logo me-10`} to={"home"}>
           <img src={logo} alt="Logo" />

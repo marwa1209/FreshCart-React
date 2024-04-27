@@ -32,6 +32,26 @@ export default function CategoriesSlider() {
     slidesToShow: 8,
     slidesToScroll: 1,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 6,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
   };
   return (
     <>

@@ -14,6 +14,7 @@ import Register from "./Components/Register/Register";
 import { useContext, useEffect } from "react";
 import { TokenContext } from "./Context/token";
 import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
+import ProducDetails from "./Components/ProducDetails/ProducDetails";
 function App() {
   const { setToken } = useContext(TokenContext);
   // routes/
@@ -35,6 +36,14 @@ function App() {
           element: (
             <ProtectedRoutes>
               <Products />
+            </ProtectedRoutes>
+          ),
+        },
+        {
+          path: "details/:id",
+          element: (
+            <ProtectedRoutes>
+              <ProducDetails />
             </ProtectedRoutes>
           ),
         },

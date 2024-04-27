@@ -17,16 +17,16 @@ export default function MainSlider() {
   return (
     <div className="my-12">
       <div className="flex">
-        <div className=" md:w-2/3">
+        <div className=" md:w-2/3 min-[420px]:w-full">
           <Slider {...settings}>
             <img src={img3} className="w-full block h-full" alt="slider-img1" />
             <img src={img1} className="w-full block h-full" alt="slider-img1" />
             <img src={img2} className="w-full block h-full" alt="slider-img1" />
           </Slider>
         </div>
-        <div className=" md:w-1/3">
-          <img src={img1} className="w-full" alt="" />
-          <img src={img2} className="w-full" alt="" />
+        <div className=" md:w-1/3 md:block sm:w-0 sm:hidden">
+          <img src={img1} className="w-full" alt="img1" />
+          <img src={img2} className="w-full" alt="img2" />
         </div>
       </div>
     </div>
