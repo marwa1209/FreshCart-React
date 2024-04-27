@@ -9,16 +9,19 @@ import TokenContextProvider from "./Context/token";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { QueryClient, QueryClientProvider } from "react-query";
-import {ReactQueryDevtools} from '../node_modules/react-query/es/devtools/devtools'
+import { ReactQueryDevtools } from "../node_modules/react-query/es/devtools/devtools";
+import CartContextProvider from "./Context/cartContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 let query = new QueryClient();
 root.render(
-  <QueryClientProvider client={query}>
-    <React.StrictMode>
-      <TokenContextProvider>
-        <App />
-      </TokenContextProvider>
-      <ReactQueryDevtools></ReactQueryDevtools>
-    </React.StrictMode>
-  </QueryClientProvider>
+  <CartContextProvider>
+    <QueryClientProvider client={query}>
+      <React.StrictMode>
+        <TokenContextProvider>
+          <App />
+        </TokenContextProvider>
+        <ReactQueryDevtools></ReactQueryDevtools>
+      </React.StrictMode>
+    </QueryClientProvider>
+  </CartContextProvider>
 );

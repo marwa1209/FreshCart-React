@@ -5,8 +5,30 @@ import Loader from "../Loader/Loader";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import PriceFormat from "../PriceFormat/PriceFormat";
+import { useContext } from "react";
+import { CartContext } from "../../Context/cartContext";
+import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 export default function Products({ limit }) {
-  //APIS
+let { addToCart } = useContext(CartContext);
+async function addCart(id) {
+let {data} =await addToCart(id)
+console.log(data)
+if (data.status==="success") {
+   toast.success("Product Added successfully", {
+     duration: 4000,
+     position: "bottom-right",
+     icon: "👏",
+     iconTheme: {
+       primary: "#000",
+       secondary: "#fff",
+     },
+   });
+}
+else{
+  toast.error("error")
+}
+}
   function getAllProducts() {
     return axios.get(`https://ecommerce.routemisr.com/api/v1/products`);
   }
@@ -14,6 +36,9 @@ export default function Products({ limit }) {
   console.log(isError);
   return (
     <>
+      <Helmet>
+        <title>Products</title>
+      </Helmet>
       {isLoading ? (
         <Loader />
       ) : (
@@ -42,11 +67,19 @@ export default function Products({ limit }) {
                       </h4>
                       <div className="flex justify-between align-middle">
                         <PriceFormat price={product.price} />
-ratingsAverage
+                        <div>
+                          <i className="fa-solid fa-star text-rating-color"></i>
+                          <span className="text-gray-600">
+                            {product.ratingsAverage}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </Link>
-                  <button className="btn-main py-1 rounded-md mx-auto">
+                  <button
+                    className="btn-main py-1 rounded-md mx-auto"
+                    onClick={() => addCart(product.id)}
+                  >
                     Add To Cart
                   </button>
                 </div>
