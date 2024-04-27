@@ -9,6 +9,7 @@ import TokenContextProvider from "./Context/token";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "../node_modules/react-query/es/devtools/devtools";
 import CartContextProvider from "./Context/cartContext";
 import PaymentContextProvider from "./Context/payment";
 const root = ReactDOM.createRoot(document.getElementById("root"));
