@@ -32,6 +32,9 @@ a {
 .notfound {
   @apply container flex justify-center items-center w-3/5  m-auto py-5;
 }
+  .btn-fun {
+    @apply rounded bg-transparent border text-black border-green-500 text-lg p-2;
+  }
 /* buttons */
 @layer components {
   .btn-main {
