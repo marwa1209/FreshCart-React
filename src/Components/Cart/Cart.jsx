@@ -1,30 +1,42 @@
 /** @format */
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { Helmet } from "react-helmet";
 import { CartContext } from "../../Context/cartContext";
 import { useQuery } from "react-query";
-import toast from "react-hot-toast";
 import Loader from "../Loader/Loader";
 import PriceFormat from "../PriceFormat/PriceFormat";
 export default function Cart() {
-  let { getCart } = useContext(CartContext);
-  function getCartItems() {
-    return getCart();
+  let { getCart, deleteFromCart } = useContext(CartContext);
+    const [products, setProducts] = useState([]);
+    const [isloading, setisloading] = useState(false);
+  // get cart items
+  async function getCartItems() {
+    setisloading(true);
+    let {data} =  await getCart();
+    console.log(data)
+        if (data.data) {
+          console.log(data.data)
+          setProducts(data?.data.products);
+          setisloading(false);
+        }
   }
-  let { data, isLoading, isError } = useQuery("products", getCartItems);
-  const products = data?.data.data.products;
-  console.log(data?.data.data);
-  if (isError === true) {
-    toast.error("error");
+  //APIS
+  useEffect(() => {
+    getCartItems();
+  }, []);
+  //delete cart specific  item
+  async function deleteCartItem(id) {
+    let response = await deleteFromCart(id);
+    setProducts(response?.data.data.products);
   }
   return (
     <>
       <Helmet>
         <title>Cart</title>
       </Helmet>
-      {isLoading ? (
+      {isloading ? (
         <Loader />
       ) : (
         <>
@@ -32,7 +44,7 @@ export default function Cart() {
             <h1 className="text-xl">Shop Cart</h1>
             <div className="flex gap-1 text-main-color">
               <h3>Total Price: </h3>
-              <PriceFormat price={data?.data.data.totalCartPrice} />
+
             </div>
             {products.map((product, index) => (
               <div key={index} className="relative my-5">
@@ -52,18 +64,19 @@ export default function Cart() {
                           <h3>Price: </h3>
                           <PriceFormat price={product.price} />
                         </div>
-                        <span className="cursor-pointer my-5">
-                          <i class="fa-solid fa-trash-can text-main-color text-lg  me-2"></i>{" "}
+                        <button
+                          onClick={() => deleteCartItem(product.product._id)}
+                          className="cursor-pointer my-5 ms-0 text-start"
+                        >
+                          <i className="fa-solid fa-trash-can text-main-color text-lg  me-2"></i>{" "}
                           Remove
-                        </span>
+                        </button>
                       </div>
                     </div>
                   </div>
                   <div className="w-1/2 my-auto flex gap-3 items-center justify-end p-2">
                     <button className="btn-fun me-0">+</button>
-                    <p className=" text-center text-black">
-                      {product.count}
-                    </p>
+                    <p className=" text-center text-black">{product.count}</p>
                     <button className="btn-fun me-0">-</button>
                   </div>
                 </div>
@@ -75,3 +88,4 @@ export default function Cart() {
     </>
   );
 }
+

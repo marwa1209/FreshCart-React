@@ -45,9 +45,9 @@ else{
         <div className=" my-16 container m-auto">
           <h2>OUR Products</h2>
           <div className="flex flex-wrap">
-            {data?.data.data
+            {data?.data?.data
               .slice(0, limit ? 18 : data.data.data.length)
-              .map((product, index, limit) => (
+              .map((product, index) => (
                 <div
                   key={index}
                   className="item xl:w-1/6 lg:w-1/3 md:w-3/6 min-[420px]:w-full my-3"
