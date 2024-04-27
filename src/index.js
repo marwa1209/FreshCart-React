@@ -22,7 +22,7 @@ root.render(
           <TokenContextProvider>
             <App />
           </TokenContextProvider>
-          <ReactQueryDevtools></ReactQueryDevtools>
+          {process.env.NODE_ENV === "development" && <ReactQueryDevtools />}
         </React.StrictMode>
       </QueryClientProvider>
     </CartContextProvider>
