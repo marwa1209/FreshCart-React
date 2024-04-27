@@ -1,4 +1,7 @@
-.Layout {}
+/** @format */
+
+.Layout {
+}
 .host {
   display: flex;
   flex-direction: column;

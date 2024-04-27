@@ -1,8 +1,6 @@
 /** @format */
 
 import React, { useContext } from "react";
-
-import styles from "./Orders.module.css";
 import { paymentContext } from "../../Context/payment";
 import { useQuery } from "react-query";
 export default function Orders() {
