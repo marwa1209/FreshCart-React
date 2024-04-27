@@ -5,19 +5,17 @@ import { Helmet } from "react-helmet";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { paymentContext } from "../../Context/payment";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 export default function Checkout() {
-  let navigate = useNavigate();
   let { pay } = useContext(paymentContext);
   let params = useParams();
   const [loaderstate, setloaderstate] = useState(false);
   async function checkOut(address) {
     setloaderstate(true);
     let data = await pay(address, params.id);
-    console.log(data.data.session.url);
-    if (data.data.status === "success") {
+    if (data?.data.status === "success") {
       setloaderstate(false);
-      navigate(data.data.session.url);
+      window.location.href = data?.data.session.url;
     }
   }
   // validation

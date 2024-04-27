@@ -16,12 +16,11 @@ export default function Cart() {
   async function getCartItems() {
     setisloading(true);
     let { data } = await getCart();
-    if (data.data) {
+    if (data?.data) {
       setProducts(data?.data.products);
     }
     if (data) {
       setdata(data);
-      console.log(data.data);
     }
     setisloading(false);
   }

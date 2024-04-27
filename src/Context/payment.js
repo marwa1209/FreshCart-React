@@ -9,22 +9,29 @@ let headers = {
     token: localStorage.getItem("userToken"),
   },
 };
-function pay(address,id) {
+function pay(address, id) {
   return axios
     .post(
       `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:3000`,
       {
-        shippingAddress: address
+        shippingAddress: address,
       },
       headers
     )
     .then((res) => res)
     .catch((err) => err);
 }
-
+function getAllOrders() {
+  return axios
+    .get(
+      `https://ecommerce.routemisr.com/api/v1/orders`
+    )
+    .then((res) => res)
+    .catch((err) => err);
+}
 export default function PaymentContextProvider(props) {
   return (
-    <paymentContext.Provider value={{ pay}}>
+    <paymentContext.Provider value={{ pay ,getAllOrders}}>
       {props.children}
     </paymentContext.Provider>
   );
