@@ -1,37 +1,23 @@
 /** @format */
 
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import Loader from "../Loader/Loader";
+import { useQuery } from "react-query";
 export default function Products() {
-  const [products, setProducts] = useState([]);
-  const [isloading, setisloading] = useState(false);
   //APIS
-  async function getProducts() {
-    setisloading(true);
-    let { data } = await axios
-      .get(`https://ecommerce.routemisr.com/api/v1/products`)
-      .catch((err) => {
-        setisloading(false);
-        console.log(err);
-      });
-    if (data.data) {
-      setProducts(data.data);
-      setisloading(false);
-    }
+  function getAllProducts() {
+    return axios.get(`https://ecommerce.routemisr.com/api/v1/products`);
   }
-  useEffect(() => {
-    getProducts();
-  }, []);
+ let {data,isLoading,isError} = useQuery("products",getAllProducts);
   return (
     <>
-      {isloading ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <div className=" my-16">
           <h2>OUR Products</h2>
           <div className="flex flex-wrap">
-            {products.map((product, index) => (
+            {data?.data.data.map((product, index) => (
               <div
                 key={index}
                 className="item cursor-pointer w-full md:w-1/6  my-3"
