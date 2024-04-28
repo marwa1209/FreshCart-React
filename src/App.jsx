@@ -1,5 +1,5 @@
 /** @format */
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
 import Layout from "./Components/Layout/Layout";
 import Home from "./Components/Home/Home";
@@ -24,6 +24,10 @@ function App() {
       path: "",
       element: <Layout />,
       children: [
+        {
+          path: "",
+          element: <Navigate to="/home" />,
+        },
         {
           path: "home",
           element: (
